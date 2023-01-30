@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 32%);
+            gap: 30px;
+            max-width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        
+        .product {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #EAEAEA;
+            flex-direction: column;
+        }
+        
+        .product__content {
+            padding-left: 16px;
+            width: 98%;
+            background-color: #f8f8f8;
+        }
+        
+        h3 {
+            font-size: 24px;
+        }
+        
+        .productId {
+            font-size: 13px;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 16px;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+        }
+        
+        .productPrice {
+            color: red;
+            margin-left: 5px;
+        }
+        
+        .productDis {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 17px;
+            color: #5D5D5D;
+            width: 95%;
+        }
+        
+        .contentHeader {
+            text-align: center;
+        }
+        
+        .headerHead {
+            font-weight: 400;
+            font-size: 30px;
+            line-height: 36px;
+            color: #222222;
+            height: 36px;
+            margin: 0px;
+        }
+        
+        .headerText {
+            font-size: 14px;
+            line-height: 17px;
+            color: #9F9F9F;
+            margin-bottom: 48px;
+            margin-top: 6px;
+        }
+        
+        .buttonBox {
+            display: flex;
+            justify-content: center;
+            margin-top: 48px;
+            margin-bottom: 95px;
+        }
+        
+        .allButton {
+            border: 1px solid #FF6A6A;
+            width: 212px;
+            height: 48px;
+            font-size: 16px;
+            line-height: 19px;
+            color: #F26376;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contentHeader">
+        <h3 class="headerHead">Fetured Items</h3>
+        <p class="headerText">Shop for items based on what we featured in this week</p>
+    </div>
+    <div class="container">
+    </div>
+    <div class="buttonBox"> <button type="#" class="allButton">Browse All Product</button></div>
+
+
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataInfo);
+        data.forEach(element => {
+            const container = document.querySelector('.container')
+
+            const productEl = document.createElement('div')
+            productEl.classList.add('product')
+
+            const productImg = document.createElement('img')
+            productImg.setAttribute('alt', 'product__image')
+            productImg.src = element.image;
+
+            const product__content = document.createElement('div')
+            product__content.classList.add('product__content')
+            const productId = document.createElement('h3')
+            productId.classList.add('productId')
+            productId.textContent = element.id;
+            const productDis = document.createElement('p')
+            productDis.classList.add('productDis')
+            productDis.textContent = element.discription;
+            const productPrice = document.createElement('p')
+            productPrice.classList.add('productPrice')
+            productPrice.textContent = element.price;
+
+            product__content.appendChild(productId);
+            product__content.appendChild(productDis);
+            product__content.appendChild(productPrice);
+
+            container.appendChild(productEl);
+            productEl.appendChild(productImg);
+            productEl.appendChild(product__content);
+        });
+    </script>
+</body>
+
+</html>
